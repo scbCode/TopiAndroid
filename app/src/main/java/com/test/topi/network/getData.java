@@ -3,6 +3,8 @@ package com.test.topi.network;
 import android.content.Context;
 import java.util.HashMap;
 import java.util.Map;
+
+import android.util.Log;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -26,7 +28,6 @@ public class getData{
         RequestQueue requestQueue=   Volley.newRequestQueue(context);
         try{
             String url=config.getUrl();
-            JSONObject object=  new  JSONObject();
             JsonObjectRequest jsonObjectRequest=  new  JsonObjectRequest(Request.Method.GET,url,null,
                new  Response.Listener<JSONObject>(){
                     @Override
@@ -41,6 +42,32 @@ public class getData{
                     }
                 });
            requestQueue.add(jsonObjectRequest);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void
+    getUseJson(final Context context,String url, final ModelManagerListener listener){
+
+        RequestQueue requestQueue=   Volley.newRequestQueue(context);
+        try{
+            JsonObjectRequest jsonObjectRequest=  new  JsonObjectRequest(Request.Method.GET,url,null,
+                    new  Response.Listener<JSONObject>(){
+                        @Override
+                        public  void  onResponse(JSONObject  response){
+
+                            listener.onSuccess(response);
+                        }
+                    },new  Response.ErrorListener(){
+                @Override
+                public  void  onErrorResponse(VolleyError  error){
+
+                    listener.onError(error);
+                }
+            });
+            requestQueue.add(jsonObjectRequest);
         }catch(Exception e){
             e.printStackTrace();
         }

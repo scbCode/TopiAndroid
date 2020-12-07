@@ -1,15 +1,16 @@
 <resources>
-    <string name="app_name">topi</string>
+    <string name="app_name">TOPi</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_title">TOPi - Mobile Developer Test</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_meu_email">saulo.cbarbosa@gmail.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Github JavaPop</string>
+    <string name="menu_sort_name">Sort by name</string>
+    <string name="menu_sort_number_start">Sort by stars</string>
 
 
 </resources>

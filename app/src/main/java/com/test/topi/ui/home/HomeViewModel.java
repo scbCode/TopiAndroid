@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.util.List;
 import android.content.Context;
 import android.app.Application;
+
+import com.google.android.material.snackbar.Snackbar;
 import com.test.topi.network.ModelManagerListener;
 import com.test.topi.network.getData;
 import android.util.Log;
@@ -24,17 +26,12 @@ import android.widget.Toast;
 
 public class HomeViewModel extends AndroidViewModel {
 
-    private MutableLiveData<String> mText;
     private MutableLiveData<JSONObject> mList;
 
     public HomeViewModel(Application application) {
         super(application);
         mList = new MutableLiveData<>();
         getListaNetwork(application.getApplicationContext());
-    }
-
-    public LiveData<String> getText() {
-        return mText;
     }
 
     public LiveData<JSONObject> getLista(){return mList;}
@@ -44,13 +41,13 @@ public class HomeViewModel extends AndroidViewModel {
 
             @Override
             public void onSuccess(JSONObject json) {
-
                 mList.setValue(json);
             }
            @Override
            public void onError(VolleyError error) {
                mList.setValue(null);
                Toast.makeText(context,"Erro ao carregar dados",Toast.LENGTH_SHORT).show();
+
            }
         });
     }
