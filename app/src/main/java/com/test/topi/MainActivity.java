@@ -61,20 +61,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id=menuItem.getItemId();
-                if (id==R.id.nav_ordenar_name){
-                    HomeFragment.adapter.ordenarPorName();
-                }
-                if (id==R.id.nav_ordenar_number_start){
-                    HomeFragment.adapter.ordenarPorNumber();
-                }
-                NavigationUI.onNavDestinationSelected(menuItem,navController);
-                drawer.closeDrawer(GravityCompat.START);
-                return true;
+        navigationView.setNavigationItemSelectedListener(menuItem -> {
+            int id=menuItem.getItemId();
+            if (id==R.id.nav_ordenar_name){
+                HomeFragment.adapter.ordenarPorName();
             }
+            if (id==R.id.nav_ordenar_number_start){
+                HomeFragment.adapter.ordenarPorNumber();
+            }
+            NavigationUI.onNavDestinationSelected(menuItem,navController);
+            drawer.closeDrawer(GravityCompat.START);
+            return true;
         });
     }
 

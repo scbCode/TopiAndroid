@@ -29,18 +29,7 @@ public class getData{
         try{
             String url=config.getUrl();
             JsonObjectRequest jsonObjectRequest=  new  JsonObjectRequest(Request.Method.GET,url,null,
-               new  Response.Listener<JSONObject>(){
-                    @Override
-                    public  void  onResponse(JSONObject  response){
-                        listener.onSuccess(response);
-                    }
-                },new  Response.ErrorListener(){
-                    @Override
-                    public  void  onErrorResponse(VolleyError  error){
-
-                        listener.onError(error);
-                    }
-                });
+                    response -> listener.onSuccess(response), error -> listener.onError(error));
            requestQueue.add(jsonObjectRequest);
         }catch(Exception e){
             e.printStackTrace();
@@ -54,19 +43,7 @@ public class getData{
         RequestQueue requestQueue=   Volley.newRequestQueue(context);
         try{
             JsonObjectRequest jsonObjectRequest=  new  JsonObjectRequest(Request.Method.GET,url,null,
-                    new  Response.Listener<JSONObject>(){
-                        @Override
-                        public  void  onResponse(JSONObject  response){
-
-                            listener.onSuccess(response);
-                        }
-                    },new  Response.ErrorListener(){
-                @Override
-                public  void  onErrorResponse(VolleyError  error){
-
-                    listener.onError(error);
-                }
-            });
+                    response -> listener.onSuccess(response), error -> listener.onError(error));
             requestQueue.add(jsonObjectRequest);
         }catch(Exception e){
             e.printStackTrace();

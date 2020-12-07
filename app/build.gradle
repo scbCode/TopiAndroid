@@ -4,7 +4,7 @@ plugins {
 
 android {
     compileSdkVersion 29
-
+    testOptions.unitTests.includeAndroidResources = true
     defaultConfig {
         applicationId "com.test.topi"
         minSdkVersion 21
@@ -12,11 +12,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        jackOptions {
-            enabled true
-        }
     }
-
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -45,8 +44,15 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.2'
+    androidTestImplementation 'com.android.support:support-annotations:23.1.0'
+    debugImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    debugImplementation 'com.android.support.test:runner:1.0.1'
+    debugImplementation 'com.android.support.test:rules:1.0.2'
+    debugImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
     testImplementation "com.google.truth:truth:1.1"
     testImplementation 'androidx.test:core:1.0.0'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+
 }
